@@ -12,13 +12,17 @@ def path():
     return parse.parse_args().directory_path
 
 
-documents = ['.txt', '.doc', '.docx', '.md', '.pdf']
+documents = ['.log', '.txt', '.doc', '.docx', '.md', '.pdf', '.wps']
 picture = ['.png', '.jpg', 'jpeg', '.bmp']
 music = ['.mp3', '.wav']
 compressed = ['.zip', '.rar', '.tar', '.gz', '.bz2', '.xz']
+video = ['.3gp', '.mov', '.mp4', '.mkv', '.srt', '.avi']
+web = ['.html', .'.css', '.js']
+source = ['.py', '.c', '.cpp', '.java',]
+
 
 directories = [path() + '/Compressed', path() + '/Documents',
-               path() + '/Pictures', path() + '/Music']
+               path() + '/Pictures', path() + '/Music', path() + '/Video', path() + '/Web', path() + '/Source-codes',]
 
 print("This will organize your files to different directories according to their type!!")
 print("Are you sure you want to continue? (y/n)")
@@ -42,6 +46,12 @@ if flag.lower() == 'y':
             if files[dot:].lower() in compressed:
                 os.rename(path() + '/' + files, path() +
                           '/Compressed/' + files)
+            if files[dot:].lower() in video:
+                os.rename(path() + '/' + files, path() + '/Video/' + files)
+            if files[dot:].lower() in web:
+                os.rename(path() + '/' + files, path() + '/Web/' + files)
+            if files[dot:].lower() in source:
+                os.rename(path() + '/' + files, path() + '/Source-codes/' + files)    
 
     for d in directories:
         if os.listdir(d) is None:
